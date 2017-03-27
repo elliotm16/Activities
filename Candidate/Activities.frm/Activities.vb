@@ -60,11 +60,7 @@ Public Class Details
 
         MsgBox(SessionCount & " Sessions have been found! Contact the centre for more information.")
 
-        txtType.Text = ""
-        txtSession.Text = ""
-        txtDay.Text = ""
-        txtLocation.Text = ""
-        TxtLevel.Text = ""
+        Clear()
 
     End Sub
 
@@ -83,6 +79,8 @@ Public Class Details
 
         sw.WriteLine(LeisureTimeData.Type & LeisureTimeData.Session & LeisureTimeData.Day & LeisureTimeData.Location & LeisureTimeData.Level)
         sw.Close()
+
+        Clear()
 
     End Sub
 
@@ -145,6 +143,16 @@ Public Class Details
             Exit Sub
 
         End If
+
+    End Sub
+
+    Private Sub Clear()
+
+        txtType.Text = ""
+        txtSession.Text = ""
+        txtDay.Text = ""
+        txtLocation.Text = ""
+        TxtLevel.Text = ""
 
     End Sub
 

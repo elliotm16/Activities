@@ -1,6 +1,4 @@
-﻿' Add length validation
-
-Imports System.IO
+﻿Imports System.IO
 
 Public Class Customers
 
@@ -27,45 +25,7 @@ Public Class Customers
         CountGot = 5
         Same = 0
 
-        If txtFirstName.Text.Length > 30 Then
-
-            MsgBox("Too many characters in first name")
-
-            Exit Sub
-
-        End If
-
-        If txtLastName.Text.Length > 30 Then
-
-            MsgBox("Too many characters in last name")
-
-            Exit Sub
-
-        End If
-
-        If txtAge.Text.Length > 4 Then
-
-            MsgBox("Too many characters in age")
-
-            Exit Sub
-
-        End If
-
-        If txtEmailAddress.Text.Length > 45 Then
-
-            MsgBox("Too many characters in email address")
-
-            Exit Sub
-
-        End If
-
-        If txtPhoneNumber.Text.Length > 11 Then
-
-            MsgBox("Too many characters in phone number")
-
-            Exit Sub
-
-        End If
+        LengthValidate()
 
         For I = 0 To UBound(CustomersData)
 
@@ -90,6 +50,7 @@ Public Class Customers
         If Not txtPhoneNumber.Text = "" Then CountNeeded = CountNeeded + 1
 
         If CountNeeded < 5 Then MsgBox("Please enter something to count!") : Exit Sub
+
         If CountGot = CountNeeded Then DataValidated = DataValidated + 1
 
         If DataValidated = 1 Then
@@ -104,6 +65,8 @@ Public Class Customers
 
             sw.WriteLine(CustomersPersonalData.FirstName & CustomersPersonalData.LastName & CustomersPersonalData.Age & CustomersPersonalData.EmailAddress & CustomersPersonalData.PhoneNumber)
             sw.Close()
+
+            Clear()
 
         End If
 
@@ -150,11 +113,7 @@ Public Class Customers
 
         MsgBox(ReadSuccess & " Set(s) of customer data read.")
 
-        txtFirstName.Text = ""
-        txtLastName.Text = ""
-        txtAge.Text = ""
-        txtEmailAddress.Text = ""
-        txtPhoneNumber.Text = ""
+        Clear()
 
     End Sub
 
@@ -199,6 +158,16 @@ Public Class Customers
             Exit Sub
 
         End If
+
+    End Sub
+
+    Private Sub Clear()
+
+        txtFirstName.Text = ""
+        txtLastName.Text = ""
+        txtAge.Text = ""
+        txtEmailAddress.Text = ""
+        txtPhoneNumber.Text = ""
 
     End Sub
 
